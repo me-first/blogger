@@ -41,7 +41,7 @@ exports.getLikeById = catchAsync(async (req, res, next) => {
 exports.getLike = catchAsync(async (req, res, next) => {
   const user = req.user.id;
   const blog = req.params.id;
-  console.log(user, blog);
+
   const likedBlog = await Like.findOne({ user, blog });
 
   res.status(200).json({

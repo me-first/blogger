@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const AppError = require('./utils/AppError');
 const globalErrorHandling = require('./controllers/errorController');
@@ -20,6 +21,9 @@ app.use(cors());
 app.use(express.json({ limit: '20kb' }));
 //COOKIE PARSER
 app.use(cookieParser());
+
+//compress code
+app.use(compression());
 
 app.use('/api/v1/blogs', blogRouter);
 app.use('/api/v1/users', userRouter);
